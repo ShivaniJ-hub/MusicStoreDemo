@@ -12,11 +12,9 @@ pipeline {
                 // Get some code from a GitHub repository
                 git branch: 'main', credentialsId: '278800bc-e334-4779-bd6f-42fc6387335e', url: 'https://github.com/ShivaniJ-hub/MusicStoreDemo.git' 
 
-                // Run Maven on a Unix agent.
-                //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
-                // To run Maven on a Windows agent, use
-				bat script:'''
+                // To run Maven on agent, use
+				sh script:'''
 					cd musicstore
 					mvn clean package
 				'''
