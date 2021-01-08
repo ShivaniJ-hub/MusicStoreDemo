@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                deploy adapters: [tomcat9(credentialsId: '76932011-a95b-43bb-acb3-753224d64865', path: '', url: 'http://localhost:8081/')], contextPath: '/music', war: 'musicstore/target/*.war'
+                deploy adapters: [tomcat9(credentialsId: '2ef3032b-2672-441a-bb58-0437608c130c', path: '', url: 'http://localhost:8081/')], contextPath: '/music', war: 'musicstore/target/*.war'
             }
         }
     }
