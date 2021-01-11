@@ -27,7 +27,7 @@ pipeline {
         }
 	stage('Check status') {
             steps {
-                sh script: "curl -I 'http://localhost:8081/music/'"
+                sh 'curl -I \'http://localhost:8081/music/\''
 	    }
         }
     }
