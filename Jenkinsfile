@@ -25,5 +25,10 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: '2ef3032b-2672-441a-bb58-0437608c130c', path: '', url: 'http://localhost:8081/')], contextPath: '/music', war: 'musicstore/target/*.war'
             }
         }
+	stage('Check status') {
+            steps {
+                sh script: "curl -I 'http://localhost:8081/music/'"
+	    }
+        }
     }
 }
