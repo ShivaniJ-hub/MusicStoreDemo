@@ -29,7 +29,7 @@ pipeline {
 	stage('Check HTTP status') {
             steps {
 		//Display HTTP Status
-                sh 'curl -I \'http://localhost:8081/music\' | grep HTTP'
+                sh 'curl -I \'http://localhost:8081/music/\' | grep HTTP'
 	    }
         }
     }
