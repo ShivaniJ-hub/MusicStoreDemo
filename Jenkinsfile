@@ -12,12 +12,17 @@ pipeline {
                 // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/ShivaniJ-hub/MusicStoreDemo.git' 
 
-
+		//Creating version.html and writing string to it
+		sh script:'''
+		    	touch version.html
+			echo "version1.0" > version.html
+		'''
+		    
                 // To run Maven on agent, use
-				sh script:'''
-					cd musicstore
-					mvn clean package
-				'''
+	         sh script:'''
+			cd musicstore
+			mvn clean package
+		'''
             }
         }
         stage('Deploy') {
@@ -29,7 +34,8 @@ pipeline {
 	stage('Check HTTP status') {
             steps {
 		//Display HTTP Status
-                sh 'curl -I \'http://localhost:8081/music/\' | grep HTTP'
+                sh 'curl -I \'http://localhost:8081/music/index.html\' | grep HTTP'
+		sh 'curl \'http://localhost:8081/music/version.html\''
 	    }
         }
     }
