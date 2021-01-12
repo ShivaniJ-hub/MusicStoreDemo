@@ -14,8 +14,8 @@ pipeline {
 
 		//Creating version.html and writing string to it
 		sh script:'''
-		    	touch /musicstore/src/main/webapp/version.html
-			echo "version1.0" > /musicstore/src/main/webapp/version.html
+		    	touch musicstore/src/main/webapp/version.html
+			echo "version1.0" > musicstore/src/main/webapp/version.html
 		'''
 		    
                 // To run Maven on agent, use
