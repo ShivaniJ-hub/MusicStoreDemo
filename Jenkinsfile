@@ -46,11 +46,13 @@ pipeline {
 		//Display HTTP Status
                 sh 'curl -I \'http://localhost:8081/music/index.html\' | grep HTTP'
 		sh 'curl \'http://localhost:8081/music/version.html\''
-		def response = sh(script: 'curl http://localhost:8081/music/version.html', returnStdout: true)
-		if(env.verCode == response)
-		    echo 'Latest version deployed'
-		else
-		    echo 'Older version deployed'
+		script{
+		    def response = sh(script: 'curl http://localhost:8081/music/version.html', returnStdout: true)
+		    if(env.verCode == response)
+		        echo 'Latest version deployed'
+		    else
+		        echo 'Older version deployed'
+		}
 	    }
         }
     }
