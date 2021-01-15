@@ -20,6 +20,7 @@ pipeline {
 		sh script:'''
 		    	touch musicstore/src/main/webapp/version.html
 		'''
+		println verCode
 		writeFile file: "musicstore/src/main/webapp/version.html", text: verCode
 	    }
 	}
