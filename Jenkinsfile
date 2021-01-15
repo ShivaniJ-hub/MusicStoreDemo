@@ -2,8 +2,7 @@ pipeline {
     agent any
     
     environment {
-        String verCode = UUID.randomUUID().toString()
-	println verCode 
+        verCode = UUID.randomUUID().toString()
     }
 
     tools {
@@ -21,11 +20,8 @@ pipeline {
 		sh script:'''
 		    	touch musicstore/src/main/webapp/version.html
 		'''
+		writeFile file: "musicstore/src/main/webapp/version.html", text: verCode
 	    }
-	}
-	stage('Version Check') {
-	      def myFile = new File('musicstore/src/main/webapp/version.html')
-	      myFile.write(verCode)
 	}
 	    
 	stage('Build'){
