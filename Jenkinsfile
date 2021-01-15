@@ -1,3 +1,5 @@
+def verCode = UUID.randomUUID().toString()
+println verCode
 pipeline {
     agent any
 
