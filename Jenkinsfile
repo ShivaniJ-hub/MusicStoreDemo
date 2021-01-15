@@ -1,4 +1,4 @@
-def verCode = UUID.randomUUID().toString()
+String verCode = UUID.randomUUID().toString()
 println verCode
 pipeline {
     agent any
@@ -17,9 +17,9 @@ pipeline {
 		//Creating version.html and writing string to it
 		sh script:'''
 		    	touch musicstore/src/main/webapp/version.html
-			echo "version1.01" > musicstore/src/main/webapp/version.html
 		'''
-		    
+		def myFile = new File('musicstore/src/main/webapp/version.html')
+		myFile.write(verCode)    
                 // To run Maven on agent, use
 	         sh script:'''
 			cd musicstore
