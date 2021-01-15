@@ -1,5 +1,5 @@
 String verCode = UUID.randomUUID().toString()
-println verCode
+println verCode 
 pipeline {
     agent any
 
@@ -9,7 +9,7 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('SCM') {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main', url: 'https://github.com/ShivaniJ-hub/MusicStoreDemo.git' 
@@ -18,8 +18,16 @@ pipeline {
 		sh script:'''
 		    	touch musicstore/src/main/webapp/version.html
 		'''
-		def myFile = new File('musicstore/src/main/webapp/version.html')
-		myFile.write(verCode)    
+	    }
+	}
+	stage('Version Check') {
+	      def myFile = new File('musicstore/src/main/webapp/version.html')
+	      myFile.write(verCode)
+	}
+	    
+	stage('Build'){
+	     steps{
+			   
                 // To run Maven on agent, use
 	         sh script:'''
 			cd musicstore
