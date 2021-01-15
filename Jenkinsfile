@@ -1,7 +1,10 @@
-String verCode = UUID.randomUUID().toString()
-println verCode 
 pipeline {
     agent any
+    
+    environment {
+        String verCode = UUID.randomUUID().toString()
+	println verCode 
+    }
 
     tools {
         // Install the Maven version configured as "Maven3.6.3" and add it to the path.
